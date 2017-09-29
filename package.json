@@ -1,0 +1,12 @@
+{
+  "name": "ts-lens",
+  "version": "1.0.0",
+  "description": "Simple typescript get/set lens",
+  "main": "index.js",
+  "repository": "git@github.com:justmiller/ts-lens.git",
+  "author": "Justin Miller<mogulslayer@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.22.0"
+  }
+}
