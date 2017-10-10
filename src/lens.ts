@@ -1,7 +1,3 @@
-const compose = <A, B, C>(leftFn: (b: B) => C, rightFn: (a: A) => B) => 
-  (a: A) =>
-  leftFn(rightFn(a))
-
 const getKey = <T, Key extends keyof T>(key: Key) =>
   (value: T): T[Key] => 
   value[key]
@@ -34,7 +30,7 @@ const identity = <X>(x: X) =>
  * Useful for getting setting a complicated path while still preserving the typing of the object.
  * Lens will transform to and from domain A, B; A <=> B *
  */
-class Lens <A extends {}, B>{
+export class Lens <A extends {}, B>{
   /** Way of converting A to B
    * Ex: Set in a object id<{ value }().thenKey('value').get({ value: 15 }) ---> 15
    */
@@ -120,4 +116,3 @@ export {
   idLens,
   lensOf,
 }
-const test = { a: {b: {c: { d: 2}}}}
