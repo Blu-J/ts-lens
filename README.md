@@ -1,3 +1,3 @@
 # Lens
 
-[![travis](https://travis-ci.org/jiayihu/pretty-algorithms.svg?branch=master)](https://travis-ci.org/jiayihu/pretty-algorithms)
+[![Build Status](https://travis-ci.org/justmiller/ts-lens.svg?branch=master)](https://travis-ci.org/justmiller/ts-lens)
