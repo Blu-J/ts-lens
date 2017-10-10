@@ -14,11 +14,6 @@ cache:
   directories:
     - typings
 
-
-# Make sure to have typings before the test
-before_script:
-  - npm prune
-
 # Make sure to bundle the application before any deploys
 before_deploy:
   - npm run bundle
