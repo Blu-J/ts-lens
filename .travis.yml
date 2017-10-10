@@ -1,0 +1,36 @@
+language: node_js
+node_js:
+  - "node"
+  - "lts/*"
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+  
+# Cache node_modules and typings for future runs. This does make the builds
+# sometimes fail because of a bad cache but usually this is a huge test
+# performance win.
+cache: 
+  yarn: true
+  directories:
+    - typings
+
+
+# Make sure to have typings before the test
+before_script:
+  - npm run typings
+  - npm prune
+
+# Make sure to bundle the application before any deploys
+before_deploy:
+  - npm run bundle
+
+after_deploy:
+  - npm pub
+
+after_success:
+  - npm run semantic-release
+  g
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

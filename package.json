@@ -1,12 +1,36 @@
 {
-  "name": "ts-lens",
-  "version": "1.0.0",
+  "name": "bluj-ts-lens",
+  "version": "0.0.0-development",
   "description": "Simple typescript get/set lens",
   "main": "index.js",
   "repository": "git@github.com:justmiller/ts-lens.git",
   "author": "Justin Miller<mogulslayer@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "test": "jest",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
   "devDependencies": {
-    "ava": "^0.22.0"
+    "@types/jest": "^19.2.2",
+    "@types/lodash": "^4.14.62",
+    "@types/node": "^7.0.12",
+    "jest": "^19.0.2",
+    "ts-jest": "^19.0.9",
+    "ts-node": "^3.0.2",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2",
+    "semantic-release": "^8.0.3"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "src/.*\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }

@@ -112,6 +112,8 @@ const IdentityLens: Lens<any, any> = lensOf(
  */
 const idLens = <T>() => IdentityLens as Lens<T, T>
 
+export default idLens;
+
 export {
   idLens,
   lensOf,
