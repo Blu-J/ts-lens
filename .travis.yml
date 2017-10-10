@@ -17,7 +17,6 @@ cache:
 
 # Make sure to have typings before the test
 before_script:
-  - npm run typings
   - npm prune
 
 # Make sure to bundle the application before any deploys
