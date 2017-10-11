@@ -13,13 +13,8 @@ cache:
   yarn: true
   directories:
     - typings
-
-# Make sure to bundle the application before any deploys
-before_deploy:
-  - npm run bundle
-
-after_deploy:
-  - npm pub
   
 after_success:
+  - npm run bundle
   - npm run semantic-release
+  - npm publish
