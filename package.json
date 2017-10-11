@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc --outDir dist/ && cp ./package.json ./dist/",
     "test": "jest",
-    "semantic-release": "(cd ./dist semantic-release pre && npm publish && semantic-release post)",
+    "semantic-release": "(cd ./dist && semantic-release pre && npm publish && semantic-release post)",
     "lint": "tslint --project tsconfig.json --fix --format stylish",
     "run-script": "npm run lint && npm run build && npm run test",
     "precommit": "npm run run-script",
