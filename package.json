@@ -35,7 +35,5 @@
       "js"
     ]
   },
-  "dependencies": {
-    "tslint-consistent-codestyle": "^1.8.0"
-  }
+  "dependencies": {}
 }
