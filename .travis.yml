@@ -6,9 +6,6 @@ notifications:
     on_success: never
     on_failure: always
   
-# Cache node_modules and typings for future runs. This does make the builds
-# sometimes fail because of a bad cache but usually this is a huge test
-# performance win.
 cache: 
   yarn: true
   directories:
