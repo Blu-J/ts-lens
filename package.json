@@ -23,7 +23,7 @@
     "semantic-release": "^8.0.3"
   },
   "release": {
-    "debug": true
+    "debug": false
   },
   "jest": {
     "transform": {
