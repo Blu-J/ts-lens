@@ -22,6 +22,7 @@ describe("with deep lens and object", () => {
         b: {
           c: "d1",
         },
+      },
     });
 
     expect(testObj).toEqual({
