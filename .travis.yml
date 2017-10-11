@@ -12,6 +12,6 @@ cache:
     - typings
   
 script:
-  - npm run lint && npm run build && npm run test
+  - npm run run-script
 after_success:
   - npm run semantic-release

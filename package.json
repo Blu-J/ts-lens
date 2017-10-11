@@ -4,25 +4,46 @@
   "description": "Simple typescript get/set lens",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "repository": "git@github.com:justmiller/ts-lens.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justmiller/ts-lens"
+  },
   "author": "Justin Miller<mogulslayer@gmail.com>",
   "license": "MIT",
+  "config": {
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
   "scripts": {
     "build": "tsc --outDir dist/",
     "test": "jest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "lint": "tslint --project tsconfig.json --fix --format stylish"
+    "lint": "tslint --project tsconfig.json --fix --format stylish",
+    "prepare": "ts-node tools/prepare",
+    "run-script": "npm run lint && npm run build && npm run test",
+    "prepush": "npm run run-script",
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg"
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
     "@types/lodash": "^4.14.62",
     "@types/node": "^7.0.12",
+    "child_process": "^1.0.2",
+    "colors": "^1.1.2",
+    "commitizen": "^2.9.6",
+    "fs": "^0.0.1-security",
+    "husky": "^0.14.3",
     "jest": "^19.0.2",
+    "path": "^0.12.7",
     "semantic-release": "^8.0.3",
     "ts-jest": "^19.0.9",
-    "ts-node": "^3.0.2",
+    "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
-    "typescript": "^2.2.2"
+    "typescript": "^2.2.2",
+    "validate-commit-msg": "^2.14.0"
   },
   "jest": {
     "transform": {
