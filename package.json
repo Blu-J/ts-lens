@@ -1,6 +1,6 @@
 {
   "name": "bluj-ts-lens",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Simple typescript get/set lens",
   "main": "dist/index.js",
   "repository": "git@github.com:justmiller/ts-lens.git",
