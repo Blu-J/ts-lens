@@ -7,9 +7,7 @@ describe("with deep lens and object", () => {
       b: {
         c: "d",
       },
-      e: "f",
     },
-    g: "h",
   };
   const testLens = idLens<typeof testObj>();
   const deepLens = testLens.thenKey("a").thenKey("b").thenKey("c");
@@ -24,9 +22,6 @@ describe("with deep lens and object", () => {
         b: {
           c: "d1",
         },
-        e: "f",
-      },
-      g: "h",
     });
 
     expect(testObj).toEqual({
@@ -34,9 +29,7 @@ describe("with deep lens and object", () => {
         b: {
           c: "d",
         },
-        e: "f",
       },
-      g: "h",
     });
 
   });
