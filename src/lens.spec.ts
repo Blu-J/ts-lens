@@ -5,7 +5,7 @@ describe("with deep lens and object", () => {
   const testObj = {
     a: {
       b: {
-        c: "e",
+        c: "d",
       },
     },
   };
