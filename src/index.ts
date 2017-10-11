@@ -1,1 +1,1 @@
-export { lensOf, Lens, idLens } from './lens'
+export { lensOf, Lens, idLens } from "./lens";

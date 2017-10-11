@@ -6,6 +6,7 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": true,
+    "strict": true,
     "jsx": "react",
     "declaration": true,
     "lib": [
