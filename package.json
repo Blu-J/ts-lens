@@ -1,5 +1,5 @@
 {
-  "name": "bluj-ts-lens",
+  "name": "ts-lens",
   "version": "1.0.1",
   "description": "Simple typescript get/set lens",
   "main": "./dist/index.js",
