@@ -1,6 +1,6 @@
 {
   "name": "ts-lens",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Simple typescript get/set lens",
   "main": "./index.js",
   "typings": "./index.d.ts",
