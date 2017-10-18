@@ -13,10 +13,11 @@
   "scripts": {
     "build": "tsc --outDir dist/ && cp ./package.json ./dist/",
     "test": "jest",
-    "semantic-release": "semantic-release pre && (cd ./dist && npm publish) && semantic-release post",
+    "semantic-release": "semantic-release pre && (npm run build && cd ./dist && npm publish) && semantic-release post",
     "lint": "tslint --project tsconfig.json --fix --format stylish",
     "run-script": "npm run lint && npm run build && npm run test",
-    "precommit": "npm run run-script",
+    "precommit": "./scripts/pre-commit.sh",
+    "prepush": "npm run test",
     "commitmsg": "validate-commit-msg"
   },
   "devDependencies": {
@@ -30,10 +31,12 @@
     "husky": "^0.14.3",
     "jest": "^19.0.2",
     "path": "^0.12.7",
+    "prettier": "^1.7.4",
     "semantic-release": "^8.0.3",
     "ts-jest": "^19.0.9",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.6.0",
     "typescript": "^2.2.2",
     "validate-commit-msg": "^2.14.0"
   },
@@ -47,6 +50,13 @@
       "tsx",
       "js"
     ]
+  },
+  "prettier": {
+    "semi:": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "printWidth": 100
   },
   "dependencies": {}
 }
