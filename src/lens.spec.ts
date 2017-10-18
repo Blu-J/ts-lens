@@ -46,8 +46,8 @@ describe('with array', () => {
     expect(deepLens.get(testObj)).toBe(2)
   })
 })
-describe('with deep lens and object broken', () => {
-  const testObj = {}
+describe('with deep lens and object that is broken', () => {
+  const testObj = undefined
   const testLens = idLens<{
     a: {
       b: {
@@ -58,9 +58,9 @@ describe('with deep lens and object broken', () => {
   const deepLens = testLens
     .thenKey('a')
     .thenKey('b')
-    .thenKey('c')
+    .thenKeyOr('c', 'f')
 
   test('get a value deep', () => {
-    expect(deepLens.get(testObj as any)).toBe(undefined)
+    expect(deepLens.get(testObj as any)).toBe('f')
   })
 })
