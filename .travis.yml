@@ -17,6 +17,7 @@ cache:
 before_deploy:
   - cd dist
 
+
 deploy:
   skip_cleanup: true
   provider: npm
