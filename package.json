@@ -19,7 +19,7 @@
     "precommit": "./scripts/pre-commit.sh",
     "prepush": "npm run test",
     "commitmsg": "validate-commit-msg",
-    "release": "standard-version && git push --follow-tags origin master; "
+    "release": "standard-version && git push --follow-tags origin master"
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
@@ -46,11 +46,7 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   },
   "prettier": {
     "semi:": false,
