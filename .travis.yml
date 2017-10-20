@@ -30,5 +30,4 @@ deploy:
 script:
   - npm run run-script
 after_success:
-  - npm run semantic-release
   - npm run build

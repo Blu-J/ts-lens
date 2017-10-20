@@ -32,7 +32,6 @@
     "jest": "^19.0.2",
     "path": "^0.12.7",
     "prettier": "^1.7.4",
-    "semantic-release": "^8.2.0",
     "ts-jest": "^19.0.9",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
@@ -45,7 +44,11 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "prettier": {
     "semi:": false,
