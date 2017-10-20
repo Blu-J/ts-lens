@@ -13,12 +13,13 @@
   "scripts": {
     "build": "tsc --outDir dist/ && cp ./package.json ./dist/",
     "test": "jest",
-    "semantic-release": "semantic-release pre && (npm run build && cd ./dist && npm publish) && semantic-release post",
+    "semantic-release": "semantic-release pre && semantic-release post",
     "lint": "tslint --project tsconfig.json --fix --format stylish",
     "run-script": "npm run lint && npm run build && npm run test",
     "precommit": "./scripts/pre-commit.sh",
     "prepush": "npm run test",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "release": "npm run build && cd ./dist/ && npm publish"
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
@@ -45,11 +46,7 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   },
   "prettier": {
     "semi:": false,
