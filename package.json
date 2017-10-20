@@ -18,8 +18,7 @@
     "run-script": "npm run lint && npm run build && npm run test",
     "precommit": "./scripts/pre-commit.sh",
     "prepush": "npm run test",
-    "commitmsg": "validate-commit-msg",
-    "release": "npm run build && cd ./dist/ && npm publish"
+    "commitmsg": "validate-commit-msg"
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
