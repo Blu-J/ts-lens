@@ -1,6 +1,6 @@
 {
   "name": "ts-lens",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Simple typescript get/set lens",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -46,7 +46,11 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "prettier": {
     "semi:": false,
