@@ -1,66 +1,98 @@
-import { idLens } from './lens'
+import { idLens } from "./lens";
 
-describe('with deep lens and object', () => {
+describe("with deep lens and object", () => {
   const testObj = {
     a: {
       b: {
-        c: 'd',
-      },
-    },
-  }
-  const testLens = idLens<typeof testObj>()
+        c: "d"
+      }
+    }
+  };
+  const testLens = idLens<typeof testObj>();
   const deepLens = testLens
-    .thenKey('a')
-    .thenKey('b')
-    .thenKey('c')
+    .thenKey("a")
+    .thenKey("b")
+    .thenKey("c");
 
-  test('get a value deep', () => {
-    expect(deepLens.get(testObj)).toBe('d')
-  })
+  test("get a value deep", () => {
+    expect(deepLens.get(testObj)).toBe("d");
+  });
 
-  test('set a value deeply without changing everything', () => {
-    expect(deepLens.set('d1')(testObj)).toEqual({
+  test("set a value deeply without changing everything", () => {
+    expect(deepLens.set("d1")(testObj)).toEqual({
       a: {
         b: {
-          c: 'd1',
-        },
-      },
-    })
+          c: "d1"
+        }
+      }
+    });
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: 'd',
-        },
-      },
-    })
-  })
-})
+          c: "d"
+        }
+      }
+    });
+  });
 
-describe('with array', () => {
-  const testObj = [0, 1]
-  const testLens = idLens<typeof testObj>()
-  const deepLens = testLens.thenKey('length')
+  test("update a value deeply without changing everything", () => {
+    expect(deepLens.update(x => `${x}1`)(testObj)).toEqual({
+      a: {
+        b: {
+          c: "d1"
+        }
+      }
+    });
 
-  test('get a length from list', () => {
-    expect(deepLens.get(testObj)).toBe(2)
-  })
-})
-describe('with deep lens and object that is broken', () => {
-  const testObj = undefined
-  const testLens = idLens<{
+    expect(testObj).toEqual({
+      a: {
+        b: {
+          c: "d"
+        }
+      }
+    });
+  });
+});
+
+describe("with array", () => {
+  const testObj = [0, 1];
+  const testLens = idLens<typeof testObj>();
+  const deepLens = testLens.thenKey("length");
+
+  test("get a length from list", () => {
+    expect(deepLens.get(testObj)).toBe(2);
+  });
+});
+describe("with deep lens and object that is broken", () => {
+  const testGood = {
     a: {
       b: {
-        c: string
+        c: "c value"
       }
     }
-  }>()
+  };
+  const testLens = idLens<typeof testGood>();
   const deepLens = testLens
-    .thenKey('a')
-    .thenKey('b')
-    .thenKeyOr('c', 'f')
+    .thenKey("a")
+    .thenKey("b")
+    .thenKeyOr("c", "f");
 
-  test('get a value deep', () => {
-    expect(deepLens.get(testObj as any)).toBe('f')
-  })
-})
+  test("get a value deep", () => {
+    expect(deepLens.get(undefined as any)).toBe("f");
+  });
+
+  test("set a value deep", () => {
+    expect(testLens.thenKey("a").set(testGood.a)({ undefined } as any)).toEqual(
+      testGood
+    );
+  });
+
+  test("set a shallow deep", () => {
+    expect(testLens.set(testGood)(undefined as any)).toEqual(testGood);
+  });
+
+  test("get a value deep with thenKeyOr", () => {
+    expect(testLens.thenKeyOr("a", testGood.a).get({} as any)).toBe(testGood.a);
+  });
+});

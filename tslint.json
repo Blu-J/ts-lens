@@ -1,16 +1,5 @@
 {
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
-    "array-type": [false],
-    "arrow-parens": false,
-    "interface-name": [false],
-    "max-line-length": [false],
-    "member-access": [false],
-    "member-ordering": [false],
-    "no-unused-expression": false,
-    "space-before-function-paren": false,
-    "object-literal-sort-keys": false,
-    "no-shadowed-variable": false,
-    "interface-over-type-literal": false
   }
 }

@@ -1,9 +1,12 @@
+
+set -o errexit #abort if any command fails
+
 # Modified from the shell referenced in https://github.com/prettier/prettier
-changedFiles=$(git diff --cached --name-only --diff-filter=ACM | grep '\.[tj]sx\?$' | tr '\n' ' ')
+changedFiles=$(git diff --cached --name-only --diff-filter=ACM | grep '.\([tj]sx\?\|css\|graphql\)$' | tr '\n' ' ')
 [ -z "$changedFiles" ] && exit 0
 
-# Fix all the files with lint
-echo "$changedFiles" | xargs ./node_modules/.bin/tslint -c tslint.json --exclude 'src/**/*.d.ts' --fix
+echo "Running lint"
+echo "$changedFiles" | xargs ./node_modules/.bin/tslint -c tslint.json --exclude --format stylish 'src/**/*.d.ts'
 tslintExitCode=$?
 
 # Exit with bad code for the tslint
@@ -12,7 +15,8 @@ then
   exit $tslintExitCode
 fi
 
-# Prettify all staged .js files
+
+echo "Running prettier"
 echo "$changedFiles" | xargs ./node_modules/.bin/prettier --write
 prettierExitCode=$?
 
@@ -22,7 +26,8 @@ then
   exit $prettierExitCode
 fi
 
-# Add back the modified/prettified files to staging
+
+echo "Re committing files"
 echo "$changedFiles" | xargs git add
 
 exit 0
