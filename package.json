@@ -41,7 +41,8 @@
     "typescript": "^2.2.2",
     "validate-commit-msg": "^2.14.0"
   },
-  "prettier": {},
+  "prettier": {
+  },
   "jest": {
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
