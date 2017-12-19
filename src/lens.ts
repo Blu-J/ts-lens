@@ -1,10 +1,15 @@
 const getKey = <T, Key extends keyof T>(key: Key) => (value: T): T[Key] =>
   value && value[key];
 
-const getOrKey = <T, Key extends keyof T, OrValue>(
+const getOrKey = <T, Key extends keyof T, OrValue extends T[Key]>(
   key: Key,
-  orValue: OrValue & T[Key]
-) => (value: T): T[Key] => (value && value[key]) || orValue;
+  orValue: OrValue
+) => (value: T): OrValue => {
+  if (value && value.hasOwnProperty(key)) {
+    return (value && value[key]) as any;
+  }
+  return orValue;
+};
 
 const setKey = <T, Key extends keyof T>(key: Key, setValue: T[Key]) => (
   value: T
@@ -62,10 +67,13 @@ export class Lens<A extends {}, B> {
   /** Like thenKey but now we have a default
    * Ex: Get a value in a model dictionary or return the default
    */
-  public thenKeyOr<Key extends keyof B, C>(key: Key, defaultValue: C & B[Key]) {
+  public thenKeyOr<Key extends keyof B, C extends B[Key]>(
+    key: Key,
+    defaultValue: C
+  ) {
     return this.then(
-      new Lens(getOrKey(key, defaultValue), (value: C & B[Key]) =>
-        setKey<B, Key>(key, value)
+      new Lens<B, C>(getOrKey(key, defaultValue), (value: C) =>
+        setKey<B, Key>(key, value as any)
       )
     );
   }
