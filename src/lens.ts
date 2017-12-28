@@ -13,10 +13,14 @@ const getOrKey = <T, Key extends keyof T, OrValue extends T[Key]>(
 
 const setKey = <T, Key extends keyof T>(key: Key, setValue: T[Key]) => (
   value: T
-): T =>
-  Object.assign({}, value, {
+): T => {
+  if (value[key] === setValue) {
+    return value;
+  }
+  return Object.assign({}, value, {
     [key]: setValue
   });
+};
 
 const constantFn = <T>(value: T) => () => value;
 

@@ -8,9 +8,9 @@ describe("with deep lens and object", () => {
       }
     }
   };
-  const testLens = idLens<typeof testObj>();
+  const testLens = idLens<{ a?: null | 0 | false | { b: { c: string } } }>();
   const deepLens = testLens
-    .thenKey("a")
+    .thenKeyOr("a", { b: { c: "fallback" } })
     .thenKey("b")
     .thenKey("c");
 
@@ -44,6 +44,18 @@ describe("with deep lens and object", () => {
         }
       }
     });
+
+    expect(testObj).toEqual({
+      a: {
+        b: {
+          c: "d"
+        }
+      }
+    });
+  });
+
+  test("update with identity returns original", () => {
+    expect(deepLens.update(x => x)(testObj)).toBe(testObj);
 
     expect(testObj).toEqual({
       a: {
