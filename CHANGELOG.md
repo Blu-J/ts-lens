@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.4"></a>
+## [1.5.4](https://github.com/justmiller/ts-lens/compare/v1.5.3...v1.5.4) (2017-12-28)
+
+
+### Bug Fixes
+
+* **lens:** Identity set returns original ([d3394e4](https://github.com/justmiller/ts-lens/commit/d3394e4))
+
+
+
 <a name="1.5.3"></a>
 ## [1.5.3](https://github.com/justmiller/ts-lens/compare/v1.5.2...v1.5.3) (2017-12-19)
 
