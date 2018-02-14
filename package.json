@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
-    "@types/lodash": "^4.14.62",
     "@types/node": "^7.0.12",
     "child_process": "^1.0.2",
     "colors": "^1.1.2",
@@ -47,11 +46,7 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)x?$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   },
   "dependencies": {}
 }
