@@ -6,7 +6,7 @@
   "typings": "./index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/justmiller/ts-lens"
+    "url": "https://github.com/blu-j/ts-lens"
   },
   "author": "Justin Miller<mogulslayer@gmail.com>",
   "license": "MIT",
@@ -46,11 +46,7 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)x?$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   },
   "dependencies": {}
 }

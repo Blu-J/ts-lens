@@ -73,6 +73,20 @@ export class Lens<A extends {}, B> {
       new Lens(getKey(key), (value: B[Key]) => setKey<B, Key>(key, value))
     );
   }
+
+  /** Composing updating/ reading with a key to get/ set in B
+   * Ex: Get/ Set value of a model of { value: number }
+   */
+  public withAttr<Key extends keyof B>(key: Key): Lens<A, B[Key]> {
+    return this.thenKey(key);
+  }
+
+  /** Composing updating/ reading with a key to get/ set in B
+   * Ex: Get/ Set value of a model of { value: number }
+   */
+  public withAttribute<Key extends keyof B>(key: Key): Lens<A, B[Key]> {
+    return this.thenKey(key);
+  }
   /** Like thenKey but now we have a default
    * Ex: Get a value in a model dictionary or return the default
    */
@@ -85,6 +99,26 @@ export class Lens<A extends {}, B> {
         setKey<B, Key>(key, value)
       )
     );
+  }
+
+  /** Like thenKey but now we have a default
+   * Ex: Get a value in a model dictionary or return the default
+   */
+  public withAttributeOr<Key extends keyof B, C extends B[Key]>(
+    key: Key,
+    defaultValue: C
+  ): Lens<A, C> {
+    return this.thenKeyOr(key, defaultValue);
+  }
+
+  /** Like thenKey but now we have a default
+   * Ex: Get a value in a model dictionary or return the default
+   */
+  public withAttrOr<Key extends keyof B, C extends B[Key]>(
+    key: Key,
+    defaultValue: C
+  ): Lens<A, C> {
+    return this.thenKeyOr(key, defaultValue);
   }
 
   /**

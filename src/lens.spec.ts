@@ -67,6 +67,73 @@ describe("with deep lens and object", () => {
   });
 });
 
+describe("with deep lens and object via english chaining", () => {
+  const testObj = {
+    a: {
+      b: {
+        c: "d"
+      }
+    }
+  };
+  const withTestObj = idLens<{ a?: null | 0 | false | { b: { c: string } } }>();
+  const deepLens = withTestObj
+    .withAttributeOr("a", { b: { c: "fallback" } })
+    .withAttr("b")
+    .withAttribute("c");
+
+  test("get a value deep", () => {
+    expect(deepLens.get(testObj)).toBe("d");
+  });
+
+  test("set a value deeply without changing everything", () => {
+    expect(deepLens.set("d1")(testObj)).toEqual({
+      a: {
+        b: {
+          c: "d1"
+        }
+      }
+    });
+
+    expect(testObj).toEqual({
+      a: {
+        b: {
+          c: "d"
+        }
+      }
+    });
+  });
+
+  test("update a value deeply without changing everything", () => {
+    expect(deepLens.update(x => `${x}1`)(testObj)).toEqual({
+      a: {
+        b: {
+          c: "d1"
+        }
+      }
+    });
+
+    expect(testObj).toEqual({
+      a: {
+        b: {
+          c: "d"
+        }
+      }
+    });
+  });
+
+  test("update with identity returns original", () => {
+    expect(deepLens.update(x => x)(testObj)).toBe(testObj);
+
+    expect(testObj).toEqual({
+      a: {
+        b: {
+          c: "d"
+        }
+      }
+    });
+  });
+});
+
 describe("with array", () => {
   const testObj = [0, 1];
   const testLens = idLens<typeof testObj>();
