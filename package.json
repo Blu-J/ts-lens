@@ -2,8 +2,11 @@
   "name": "ts-lens",
   "version": "1.6.0",
   "description": "Simple typescript get/set lens",
-  "main": "./index.js",
-  "typings": "./index.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/blu-j/ts-lens"
@@ -11,7 +14,7 @@
   "author": "Justin Miller<mogulslayer@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --outDir dist/ && cp ./package.json ./dist/",
+    "build": "tsc --outDir lib/ ",
     "test": "jest",
     "semantic-release": "semantic-release pre && semantic-release post",
     "lint": "tslint --project tsconfig.json --format stylish",
@@ -45,7 +48,7 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(dist|src)/.*\\.spec\\.(js|ts)x?$",
+    "testRegex": "(lib|src)/.*\\.spec\\.(js|ts)x?$",
     "moduleFileExtensions": [
       "ts",
       "tsx",

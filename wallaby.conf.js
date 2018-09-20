@@ -5,10 +5,10 @@ module.exports = function(wallaby) {
     },
     files: [
       "tsconfig.json",
-      "{src,dist}/**/*.{t,h}s{x,}",
-      "!{src,dist}/**/*.spec.{t,h}s{x,}"
+      "{src,lib}/**/*.{t,h}s{x,}",
+      "!{src,lib}/**/*.spec.{t,h}s{x,}"
     ],
     testFramework: "jest",
-    tests: ["{src,dist}/**/*.spec.{t,h}s{x,}"]
+    tests: ["{src,lib}/**/*.spec.{t,h}s{x,}"]
   };
 };

@@ -5,15 +5,11 @@ notifications:
   email:
     on_success: never
     on_failure: always
-  
-cache: 
+
+cache:
   yarn: true
   directories:
     - typings
-
-before_deploy:
-  - cd dist
-
 
 deploy:
   skip_cleanup: true
@@ -23,7 +19,7 @@ deploy:
   on:
     branch: master
     tags: true
-    
+
 script:
   - npm run run-script
 after_success:
