@@ -5,7 +5,7 @@ const getOrKey = <T, Key extends keyof T, OrValue extends T[Key]>(
   key: Key,
   orValue: OrValue
 ) => (value: T): OrValue => {
-  if (value && value.hasOwnProperty(key)) {
+  if (value && Object.prototype.hasOwnProperty.call(value, key)) {
     return (value && value[key]) as any;
   }
   return orValue;
