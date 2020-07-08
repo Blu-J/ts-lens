@@ -4,9 +4,9 @@ describe("with deep lens and object", () => {
   const testObj = {
     a: {
       b: {
-        c: "d"
-      }
-    }
+        c: "d",
+      },
+    },
   };
   const testLens = idLens<{ a?: null | 0 | false | { b: { c: string } } }>();
   const deepLens = testLens
@@ -22,47 +22,47 @@ describe("with deep lens and object", () => {
     expect(deepLens.set("d1")(testObj)).toEqual({
       a: {
         b: {
-          c: "d1"
-        }
-      }
+          c: "d1",
+        },
+      },
     });
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: "d"
-        }
-      }
+          c: "d",
+        },
+      },
     });
   });
 
   test("update a value deeply without changing everything", () => {
-    expect(deepLens.update(x => `${x}1`)(testObj)).toEqual({
+    expect(deepLens.update((x) => `${x}1`)(testObj)).toEqual({
       a: {
         b: {
-          c: "d1"
-        }
-      }
+          c: "d1",
+        },
+      },
     });
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: "d"
-        }
-      }
+          c: "d",
+        },
+      },
     });
   });
 
   test("update with identity returns original", () => {
-    expect(deepLens.update(x => x)(testObj)).toBe(testObj);
+    expect(deepLens.update((x) => x)(testObj)).toBe(testObj);
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: "d"
-        }
-      }
+          c: "d",
+        },
+      },
     });
   });
 });
@@ -71,9 +71,9 @@ describe("with deep lens and object via english chaining", () => {
   const testObj = {
     a: {
       b: {
-        c: "d"
-      }
-    }
+        c: "d",
+      },
+    },
   };
   const withTestObj = idLens<{ a?: null | 0 | false | { b: { c: string } } }>();
   const deepLens = withTestObj
@@ -89,47 +89,47 @@ describe("with deep lens and object via english chaining", () => {
     expect(deepLens.set("d1")(testObj)).toEqual({
       a: {
         b: {
-          c: "d1"
-        }
-      }
+          c: "d1",
+        },
+      },
     });
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: "d"
-        }
-      }
+          c: "d",
+        },
+      },
     });
   });
 
   test("update a value deeply without changing everything", () => {
-    expect(deepLens.update(x => `${x}1`)(testObj)).toEqual({
+    expect(deepLens.update((x) => `${x}1`)(testObj)).toEqual({
       a: {
         b: {
-          c: "d1"
-        }
-      }
+          c: "d1",
+        },
+      },
     });
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: "d"
-        }
-      }
+          c: "d",
+        },
+      },
     });
   });
 
   test("update with identity returns original", () => {
-    expect(deepLens.update(x => x)(testObj)).toBe(testObj);
+    expect(deepLens.update((x) => x)(testObj)).toBe(testObj);
 
     expect(testObj).toEqual({
       a: {
         b: {
-          c: "d"
-        }
-      }
+          c: "d",
+        },
+      },
     });
   });
 });
@@ -147,15 +147,12 @@ describe("with deep lens and object that is broken", () => {
   const testGood = {
     a: {
       b: {
-        c: "c value"
-      }
-    }
+        c: "c value",
+      },
+    },
   };
   const testLens = idLens<typeof testGood>();
-  const deepLens = testLens
-    .thenKey("a")
-    .thenKey("b")
-    .thenKeyOr("c", "f");
+  const deepLens = testLens.thenKey("a").thenKey("b").thenKeyOr("c", "f");
 
   test("get a value deep", () => {
     expect(deepLens.get(undefined as any)).toBe("f");

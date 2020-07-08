@@ -9,10 +9,7 @@
     "strict": true,
     "jsx": "react",
     "declaration": true,
-    "lib": [
-      "dom",
-      "es2015"
-    ],
+    "lib": ["dom", "es2015"],
     "baseUrl": "."
   },
   "include": [

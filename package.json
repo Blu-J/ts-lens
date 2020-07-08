@@ -16,34 +16,19 @@
   "scripts": {
     "build": "tsc --outDir lib/ ",
     "test": "jest",
-    "ci": "npm run build && npm run lint && npm run test",
-    "semantic-release": "semantic-release pre && semantic-release post",
+    "ci": "npm run lint && npm run test && npm run pretty-check",
     "lint": "tslint --project tsconfig.json --format stylish",
-    "run-script": "npm run lint && npm run build && npm run test",
-    "precommit": "./scripts/pre-commit.sh",
-    "prepush": "npm run test",
-    "commitmsg": "validate-commit-msg",
-    "release": "standard-version && git push --follow-tags origin master"
+    "pretty-check": "prettier --check src/**",
+    "fmt": "prettier --write ."
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@types/node": "^13.1.0",
-    "child_process": "^1.0.2",
-    "colors": "^1.1.2",
-    "commitizen": "^4.0.0",
-    "fs": "^0.0.1-security",
-    "husky": "^4.2.0",
     "jest": "^25.1.0",
-    "path": "^0.12.7",
     "prettier": "^2.0.2",
-    "set-value": "^3.0.1",
-    "standard-version": "^7.0.0",
-    "ts-jest": "^25.0.0",
-    "ts-node": "^8.0.1",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.6.0",
-    "typescript": "^3.0.3",
-    "validate-commit-msg": "^2.14.0"
+    "typescript": "^3.0.3"
   },
   "prettier": {},
   "jest": {
@@ -57,5 +42,7 @@
       "js"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "ts-jest": "^26.1.1"
+  }
 }

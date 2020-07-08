@@ -20,7 +20,7 @@ const setKey = <T, Key extends keyof T>(key: Key, setValue: T[Key]) => <
     return value;
   }
   return Object.assign({}, value, {
-    [key]: setValue
+    [key]: setValue,
   });
 };
 
