@@ -22,7 +22,7 @@
     "fmt": "prettier --write ."
   },
   "devDependencies": {
-    "@types/jest": "^25.1.4",
+    "@types/jest": "^26.0.4",
     "@types/node": "^13.1.0",
     "jest": "^25.1.0",
     "prettier": "^2.0.2",
