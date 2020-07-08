@@ -1,8 +1,5 @@
 # Lens
-
-[![Build Status](https://travis-ci.org/Blu-J/ts-lens.svg?branch=master)](https://travis-ci.org/Blu-J/ts-lens)
-![Bundle Phobia](https://badgen.net/bundlephobia/min/ts-lens)
-![Bundle Phobia](https://badgen.net/bundlephobia/minzip/ts-lens)
+![Node.js CI](https://github.com/Blu-J/ts-lens/workflows/Node.js%20CI/badge.svg)
 
 A lens is a getter/ setter for traversing a structure.
 A lens is also composable with other lenses, allowing traversing via a object or using projections.
