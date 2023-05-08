@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.4",
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.1.0",
     "jest": "^26.1.0",
     "prettier": "^2.0.2",
     "tslint": "^6.0.0",
